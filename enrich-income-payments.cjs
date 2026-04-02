@@ -1,5 +1,5 @@
 const fs = require('fs'), p = require('path');
-const B = 'c:/Office/JFMS/src/pages';
+const B = './src/pages';
 function w(r, c) { fs.writeFileSync(p.join(B, r), c); console.log('RICH:' + r); }
 
 // ============ INCOME FORMS (remaining stubs) ============

@@ -1,0 +1,1 @@
+export default function SabeelSearch(){return(<div><div className="page-header"><div><h1 className="page-title">Sabeel Profile Search</h1><p className="page-subtitle">Search by Sabeel No or ITS ID</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Sabeel Profile Search</p></div></div>);}

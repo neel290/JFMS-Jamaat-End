@@ -1,0 +1,1 @@
+export default function DailyCostSheet(){return(<div><div className="page-header"><div><h1 className="page-title">Daily Cost Sheet</h1><p className="page-subtitle">Daily FMB operational costs</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Daily Cost Sheet</p></div></div>);}

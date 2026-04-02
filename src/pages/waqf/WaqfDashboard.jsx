@@ -1,0 +1,1 @@
+export default function WaqfDashboard(){return(<div><div className="page-header"><div><h1 className="page-title">Waqf / Trust</h1><p className="page-subtitle">Property and maintenance</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Waqf / Trust</p></div></div>);}

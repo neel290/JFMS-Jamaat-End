@@ -1,0 +1,1 @@
+export default function InKindDonation(){return(<div><div className="page-header"><div><h1 className="page-title">In-Kind Donation Entry</h1><p className="page-subtitle">Record donated assets</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for In-Kind Donation Entry</p></div></div>);}

@@ -1,0 +1,1 @@
+export default function SuspenseResolution(){return(<div><div className="page-header"><div><h1 className="page-title">Suspense Resolution</h1><p className="page-subtitle">Resolve unmatched entries</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Suspense Resolution</p></div></div>);}

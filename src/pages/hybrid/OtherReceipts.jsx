@@ -1,0 +1,1 @@
+export default function OtherReceipts(){return(<div><div className="page-header"><div><h1 className="page-title">Other Receipts & Liabilities</h1><p className="page-subtitle">Advance payments and deposits</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Other Receipts & Liabilities</p></div></div>);}

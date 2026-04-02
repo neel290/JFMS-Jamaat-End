@@ -1,0 +1,1 @@
+export default function CommitteeDashboard(){return(<div><div className="page-header"><div><h1 className="page-title">Committee Dashboard</h1><p className="page-subtitle">Madrasah environment</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Committee Dashboard</p></div></div>);}

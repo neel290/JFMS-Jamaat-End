@@ -1,0 +1,1 @@
+export default function ConstructionDashboard(){return(<div><div className="page-header"><div><h1 className="page-title">Construction Project</h1><p className="page-subtitle">Project phases and budget</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Construction Project</p></div></div>);}

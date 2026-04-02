@@ -1,5 +1,5 @@
 const fs=require('fs'),p=require('path');
-const B='c:/Office/JFMS/src/pages';
+const B='./src/pages';
 function w(r,c){const f=p.join(B,r);fs.mkdirSync(p.dirname(f),{recursive:true});fs.writeFileSync(f,c);console.log('OK:'+r);}
 function stub(file,name,title,sub){
   if(fs.existsSync(p.join(B,file)))return console.log('SKIP:'+file);

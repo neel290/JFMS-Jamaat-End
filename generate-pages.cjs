@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const base = 'c:/Office/JFMS/src/pages';
+const base = './src/pages';
 
 function w(rel, code) {
   const fp = path.join(base, rel);
@@ -526,4 +526,4 @@ export default function IncomeDashboard() {
 }`);
 
 console.log('Created all admin, takhmeen, and income pages');
-"
+

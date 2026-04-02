@@ -1,0 +1,1 @@
+export default function Inventory(){return(<div><div className="page-header"><div><h1 className="page-title">Inventory Management</h1><p className="page-subtitle">Stock levels and alerts</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Inventory Management</p></div></div>);}

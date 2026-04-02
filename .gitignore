@@ -1,21 +1,38 @@
-node_modules
-dist
-.DS_Store
-*.local
-.env
-.idea
-.vscode
+# Dependencies
+node_modules/
+dist/
+
+# Logs
+*.log
 build-log.txt
-*.cjs
-*.js
+
+# OS/IDE files
+.DS_Store
+.idea/
+.vscode/
+*.local
+
+# Environment
+.env
+.env.*
+
+# Project-specific irrelevant files
+*.pdf
+debug_pdf.cjs
+parse_new_pdf.cjs
+parse_pdf.cjs
+extract_roles.js
+enrich-admin.cjs
+enrich-income-payments.cjs
+enrich-modules.cjs
+enrich-rest.cjs
+gen.cjs
+generate-pages.cjs
+
+# Invert specific items that should be tracked
 !src/**/*.js
 !src/**/*.jsx
 !vite.config.js
 !package.json
 !package-lock.json
 !index.html
-brd.txt
-roles_flow.txt
-debug_pdf.cjs
-parse_new_pdf.cjs
-extract_roles.js

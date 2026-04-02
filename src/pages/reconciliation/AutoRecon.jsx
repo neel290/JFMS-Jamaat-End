@@ -1,0 +1,1 @@
+export default function AutoRecon(){return(<div><div className="page-header"><div><h1 className="page-title">Auto Reconciliation (H2H)</h1><p className="page-subtitle">Auto-matched bank transactions</p></div></div><div className="card"><p style={{color:'var(--gray-500)'}}>Screen content for Auto Reconciliation (H2H)</p></div></div>);}
