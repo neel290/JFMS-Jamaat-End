@@ -2,12 +2,17 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, EnvProvider } from './contexts/AppContexts';
 import AppLayout from './components/Layout/AppLayout';
 import LoginPage from './pages/auth/LoginPage';
+import AamilSSO from './pages/auth/AamilSSO';
 import OTPPage from './pages/auth/OTPPage';
 import NDAPage from './pages/auth/NDAPage';
 import EnvSelectPage from './pages/auth/EnvSelectPage';
 import RecoveryPage from './pages/auth/RecoveryPage';
 import SecurityOnboarding from './pages/auth/SecurityOnboarding';
-import Dashboard from './pages/dashboard/Dashboard';
+import OperationalDashboard from './pages/dashboard/OperationalDashboard';
+import AnalyticalDashboard from './pages/dashboard/AnalyticalDashboard';
+import PendencyDashboard from './pages/dashboard/PendencyDashboard';
+import ReportsCatalog from './pages/reports/ReportsCatalog';
+
 import UsersList from './pages/admin/UsersList';
 import AddUser from './pages/admin/AddUser';
 import UserDetail from './pages/admin/UserDetail';
@@ -16,6 +21,8 @@ import SabeelMaster from './pages/admin/SabeelMaster';
 import BankAccounts from './pages/admin/BankAccounts';
 import IncomePurposeMapping from './pages/admin/IncomePurposeMapping';
 import AccessControl from './pages/admin/AccessControl';
+import TallyExportWorkbench from './pages/admin/TallyExportWorkbench';
+import DataMigrationToolkit from './pages/admin/DataMigrationToolkit';
 import TakhmeenDashboard from './pages/takhmeen/TakhmeenDashboard';
 import TakhmeenGroups from './pages/takhmeen/TakhmeenGroups';
 import CreateTakhmeenGroup from './pages/takhmeen/CreateTakhmeenGroup';
@@ -28,9 +35,11 @@ import TakhmeenIncomeEntry from './pages/income/TakhmeenIncomeEntry';
 import VoluntaryIncomeEntry from './pages/income/VoluntaryIncomeEntry';
 import OrgIncomeEntry from './pages/income/OrgIncomeEntry';
 import EnayatIncomeEntry from './pages/income/EnayatIncomeEntry';
+import InKindDonation from './pages/income/InKindDonation';
 import AgriIncomeEntry from './pages/income/AgriIncomeEntry';
 import OtherIncomeEntry from './pages/income/OtherIncomeEntry';
 import IncomeListing from './pages/income/IncomeListing';
+import ReceiptDetail from './pages/income/ReceiptDetail';
 import ReceiptCancellation from './pages/income/ReceiptCancellation';
 import SuspenseManagement from './pages/income/SuspenseManagement';
 import IncomeDashboard from './pages/income/IncomeDashboard';
@@ -48,6 +57,9 @@ import SalaryPayment from './pages/payments/SalaryPayment';
 import PettyCash from './pages/payments/PettyCash';
 import BankTransfer from './pages/payments/BankTransfer';
 import PaymentListing from './pages/payments/PaymentListing';
+import PaymentRegister from './pages/payments/PaymentRegister';
+import StandingInstructions from './pages/payments/StandingInstructions';
+import SuspenseCredits from './pages/income/SuspenseCredits';
 import PropertyRent from './pages/hybrid/PropertyRent';
 import HallBooking from './pages/hybrid/HallBooking';
 import OtherReceipts from './pages/hybrid/OtherReceipts';
@@ -55,7 +67,6 @@ import ReconDashboard from './pages/reconciliation/ReconDashboard';
 import AutoRecon from './pages/reconciliation/AutoRecon';
 import ManualRecon from './pages/reconciliation/ManualRecon';
 import SuspenseResolution from './pages/reconciliation/SuspenseResolution';
-import InKindDonation from './pages/assets/InKindDonation';
 import AssetRegister from './pages/assets/AssetRegister';
 import JournalEntry from './pages/journal/JournalEntry';
 import JournalListing from './pages/journal/JournalListing';
@@ -82,6 +93,7 @@ import CommitteeDashboard from './pages/committee/CommitteeDashboard';
 import WaqfDashboard from './pages/waqf/WaqfDashboard';
 import MigrationWizard from './pages/migration/MigrationWizard';
 import SupportHome from './pages/support/SupportHome';
+import SupportHelpCentre from './pages/support/SupportHelpCentre';
 import RaiseTicket from './pages/support/RaiseTicket';
 import FAQPage from './pages/support/FAQPage';
 import MobilePreview from './pages/mobile/MobilePreview';
@@ -95,6 +107,7 @@ export default function App() {
             {/* Auth routes — no sidebar */}
             <Route path="/" element={<LoginPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/auth/aamil-sso" element={<AamilSSO />} />
             <Route path="/otp" element={<OTPPage />} />
             <Route path="/nda" element={<NDAPage />} />
             <Route path="/security-onboarding" element={<SecurityOnboarding />} />
@@ -103,7 +116,10 @@ export default function App() {
 
             {/* Main app routes — with sidebar layout */}
             <Route element={<AppLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Navigate to="/dashboard/operational" replace />} />
+              <Route path="/dashboard/operational" element={<OperationalDashboard />} />
+              <Route path="/dashboard/analytical" element={<AnalyticalDashboard />} />
+              <Route path="/dashboard/pendency" element={<PendencyDashboard />} />
 
               {/* Admin */}
               <Route path="/admin/users" element={<UsersList />} />
@@ -114,6 +130,8 @@ export default function App() {
               <Route path="/admin/banks" element={<BankAccounts />} />
               <Route path="/admin/mappings" element={<IncomePurposeMapping />} />
               <Route path="/admin/access" element={<AccessControl />} />
+              <Route path="/tally-export" element={<TallyExportWorkbench />} />
+              <Route path="/migration" element={<DataMigrationToolkit />} />
 
               {/* Takhmeen */}
               <Route path="/takhmeen" element={<TakhmeenDashboard />} />
@@ -130,11 +148,14 @@ export default function App() {
               <Route path="/income/voluntary" element={<VoluntaryIncomeEntry />} />
               <Route path="/income/organization" element={<OrgIncomeEntry />} />
               <Route path="/income/enayat" element={<EnayatIncomeEntry />} />
+              <Route path="/income/inkind" element={<InKindDonation />} />
               <Route path="/income/agriculture" element={<AgriIncomeEntry />} />
               <Route path="/income/other" element={<OtherIncomeEntry />} />
               <Route path="/income/listing" element={<IncomeListing />} />
+              <Route path="/income/receipt/:id" element={<ReceiptDetail />} />
               <Route path="/income/cancel" element={<ReceiptCancellation />} />
               <Route path="/income/suspense" element={<SuspenseManagement />} />
+              <Route path="/income/suspense-credits" element={<SuspenseCredits />} />
               <Route path="/income/dashboard" element={<IncomeDashboard />} />
 
               {/* Deposits */}
@@ -154,6 +175,8 @@ export default function App() {
               <Route path="/payments/petty-cash" element={<PettyCash />} />
               <Route path="/payments/bank-transfer" element={<BankTransfer />} />
               <Route path="/payments/listing" element={<PaymentListing />} />
+              <Route path="/payments/register" element={<PaymentRegister />} />
+              <Route path="/payments/emandate" element={<StandingInstructions />} />
 
               {/* Hybrid Receipt & Payment */}
               <Route path="/hybrid/rent" element={<PropertyRent />} />
@@ -184,6 +207,7 @@ export default function App() {
               <Route path="/notifications" element={<NotificationCentre />} />
 
               {/* Reports */}
+              <Route path="/reports/catalog" element={<ReportsCatalog />} />
               <Route path="/reports/income" element={<IncomeReport />} />
               <Route path="/reports/expense" element={<ExpenseReport />} />
               <Route path="/reports/balance-sheet" element={<BalanceSheet />} />

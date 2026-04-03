@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useStore } from '../../store/useStore';
-import { Home, User, CreditCard, AlertCircle, Search, Building2, CheckCircle2 } from 'lucide-react';
+import { Home, User, CreditCard, AlertCircle, Search, Building2, CheckCircle2, History, Calendar } from 'lucide-react';
+import AuditFooter from '../../components/ui/AuditFooter';
 
 export default function PropertyRent() {
   const { properties } = useStore();
@@ -78,12 +79,41 @@ export default function PropertyRent() {
                   </div>
                 </div>
 
+                <div style={{margin:'8px 0'}}>
+                  <h4 style={{fontSize:'0.8125rem', marginBottom: 12, display:'flex', alignItems:'center', gap: 6}}>
+                    <History size={14}/> Lease Schedule
+                  </h4>
+                  <table style={{width:'100%', fontSize:'0.75rem'}}>
+                    <thead>
+                      <tr style={{color:'var(--gray-500)', textAlign:'left'}}>
+                        <th style={{paddingBottom: 8}}>Period</th>
+                        <th style={{paddingBottom: 8}}>Amount</th>
+                        <th style={{paddingBottom: 8}}>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={{borderTop:'1px solid var(--gray-100)'}}>
+                        <td style={{padding: '8px 0'}}>Apr 2026</td>
+                        <td>₹{selectedProp.rent}</td>
+                        <td><span className="badge badge-pending" style={{fontSize:'0.6rem'}}>Due</span></td>
+                      </tr>
+                      <tr style={{borderTop:'1px solid var(--gray-100)'}}>
+                        <td style={{padding: '8px 0'}}>Mar 2026</td>
+                        <td>₹{selectedProp.rent}</td>
+                        <td><span className="badge badge-active" style={{fontSize:'0.6rem'}}>Paid</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
                 <button className="btn btn-primary" style={{width:'100%', marginTop: 8}} onClick={() => alert('Rent Receipt Generated!')}>
                   <CreditCard size={16}/> Record Rent Payment
                 </button>
                 <button className="btn btn-outline" style={{width:'100%'}}>
-                   View Lease Agreement
+                   <Calendar size={16}/> Renew Lease Agreement
                 </button>
+                
+                <AuditFooter createdBy="Ishaq Bhai" createdAt="10-Jan-2026" modifiedBy="Mustafa Bhai" modifiedAt="02-Apr-2026" />
               </div>
             </div>
           ) : (

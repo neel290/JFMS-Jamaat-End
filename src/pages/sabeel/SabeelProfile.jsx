@@ -1,3 +1,5 @@
+import AuditFooter from '../../components/ui/AuditFooter';
+
 export default function SabeelProfile() {
   return (<div>
     <div className="page-header"><div><h1 className="page-title">Sabeel Profile — 101</h1><p className="page-subtitle">Comprehensive household view for Shabbir Bhai Cyclewala</p></div></div>
@@ -15,5 +17,6 @@ export default function SabeelProfile() {
         <tbody>{[['01-Apr-2026','Income','Wajebaat','₹15,000','UPI','REC-2026-0451'],['15-Mar-2026','Income','Zakat','₹15,000','Bank Transfer','REC-2026-0420'],['01-Feb-2026','Income','Niyaz','₹2,000','Cash','REC-2026-0380']].map(([d,t,p,a,m,r],i)=>(<tr key={i}><td>{d}</td><td><span className="badge badge-active">{t}</span></td><td>{p}</td><td style={{fontWeight:600}}>{a}</td><td>{m}</td><td style={{fontSize:'0.8125rem'}}>{r}</td></tr>))}</tbody>
       </table></div>
     </div>
+    <AuditFooter createdBy="Ishaq Bhai" createdAt="01-Apr-2026" />
   </div>);
 }

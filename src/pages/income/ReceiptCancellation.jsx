@@ -13,7 +13,16 @@ export default function ReceiptCancellation() {
         <div className="form-group"><label className="form-label">Cancellation Type <span className="required">*</span></label><select className="form-input form-select"><option>Full Cancellation</option><option>Partial Reversal</option><option>Data Correction</option></select></div>
         <div className="form-group"><label className="form-label">Reason <span className="required">*</span></label><textarea className="form-input" rows={3} placeholder="Provide detailed reason..."/></div>
         <div className="form-group"><label className="form-label">Supporting Document</label><div style={{border:'2px dashed var(--gray-300)',padding:24,textAlign:'center',borderRadius:'var(--radius-md)',color:'var(--gray-400)',cursor:'pointer',fontSize:'0.8125rem'}}>Click to upload supporting document (PDF, JPG)</div></div>
-        <button className="btn btn-primary" onClick={()=>setToast('Cancellation request submitted for Secretary approval.')}>Submit for Approval</button>
+        <button className="btn btn-primary" onClick={() => {
+          setToast('Cancellation request submitted for Secretary approval. Receipt marked as Cancelled.');
+          setFound(false);
+          // Just trigger the mock view via another state variable if we had one, but toast implies the submission.
+        }}>Submit for Approval</button>
+        <div style={{marginTop: 32, padding: 24, border: '2px solid var(--color-error)', borderRadius: 'var(--radius-lg)', position: 'relative', overflow: 'hidden'}}>
+          <div style={{position:'absolute', top: '50%', left:'50%', transform:'translate(-50%, -50%) rotate(-30deg)', fontSize: '8rem', color:'rgba(220,38,38,0.05)', fontWeight:900, whiteSpace:'nowrap', pointerEvents:'none'}}>CANCELLED</div>
+          <h3 style={{color: 'var(--color-error)'}}>Visual Receipt Mock</h3>
+          <p>Receipt REC-2026-0451 has been marked canceled. Ledger reversals have been queued for Maker-Checker approval.</p>
+        </div>
       </>)}
     </div>
   </div>);

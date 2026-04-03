@@ -49,9 +49,11 @@ export default function SabeelMaster() {
             
             <div className="form-group">
               <label className="form-label">Sabeel No <span className="required">*</span></label>
-              <input type="text" className="form-input" placeholder="Max 15 chars" maxLength={15} value={newSabeel.sabeelNo} onChange={e => {
-                const val = e.target.value;
-                setNewSabeel(prev => ({...prev, sabeelNo: val, error: ''}));
+              <input type="text" className="form-input" placeholder="Alphanumeric, max 15" maxLength={15} value={newSabeel.sabeelNo} onChange={e => {
+                const val = e.target.value.toUpperCase();
+                if (val === '' || /^[A-Z0-9]+$/.test(val)) {
+                  setNewSabeel(prev => ({...prev, sabeelNo: val, error: ''}));
+                }
               }} />
               <div className="form-hint" style={{color: newSabeel.sabeelNo.length === 15 ? 'orange' : 'var(--gray-500)'}}>
                 {newSabeel.sabeelNo.length}/15 characters

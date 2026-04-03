@@ -6,13 +6,15 @@ import {
   BookOpen, UserCircle, Download, Bell, HelpCircle, Database,
   Smartphone, ChefHat, HardHat, GraduationCap, Home, Settings,
   TrendingUp, BarChart3, ClipboardList, Package, FileSpreadsheet,
-  HandCoins, Building, CalendarDays, GitBranch, ShieldCheck
+  HandCoins, Building, CalendarDays, GitBranch, ShieldCheck, Clock
 } from 'lucide-react';
 
 const sidebarConfig = {
   sabeel: [
     { section: 'Main', items: [
-      { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+      { to: '/dashboard/operational', label: 'Operational Dashboard', icon: LayoutDashboard },
+      { to: '/dashboard/analytical', label: 'Analytical Dashboard', icon: BarChart3 },
+      { to: '/dashboard/pendency', label: 'Pendency Dashboard', icon: Clock },
     ]},
     { section: 'Administration', items: [
       { to: '/admin/users', label: 'User Management', icon: Users, badge: 1 },
@@ -31,6 +33,7 @@ const sidebarConfig = {
     ]},
     { section: 'Income', items: [
       { to: '/income', label: 'Income Entry', icon: HandCoins },
+      { to: '/income/inkind', label: 'In-Kind Donation', icon: Package },
       { to: '/income/listing', label: 'Income Listing', icon: FileText },
       { to: '/income/dashboard', label: 'Income Dashboard', icon: BarChart3 },
       { to: '/income/suspense', label: 'Suspense Entries', icon: HelpCircle },
@@ -65,14 +68,7 @@ const sidebarConfig = {
       { to: '/sabeel', label: 'Sabeel Profile', icon: UserCircle },
     ]},
     { section: 'Reports', items: [
-      { to: '/reports/income', label: 'Income Report', icon: BarChart3 },
-      { to: '/reports/expense', label: 'Expense Report', icon: BarChart3 },
-      { to: '/reports/balance-sheet', label: 'Balance Sheet', icon: FileText },
-      { to: '/reports/ie-statement', label: 'I&E Statement', icon: FileText },
-      { to: '/reports/bank-summary', label: 'Bank Summary', icon: Landmark },
-      { to: '/reports/takhmeen', label: 'Takhmeen Report', icon: ClipboardList },
-      { to: '/reports/compliance', label: 'Compliance', icon: ShieldCheck },
-      { to: '/reports/audit', label: 'Audit Log', icon: ClipboardList },
+      { to: '/reports/catalog', label: 'Reports Catalog', icon: FileText },
     ]},
     { section: 'Other', items: [
       { to: '/tally-export', label: 'Tally Export', icon: Download },

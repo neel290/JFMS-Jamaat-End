@@ -101,6 +101,12 @@ export default function JournalEntry() {
               <label className="form-label">Narration <span className="required">*</span></label>
               <input type="text" className="form-input" placeholder="e.g. Correction entry" value={narration} onChange={e=>setNarration(e.target.value)} disabled={isReadOnly}/>
             </div>
+            <div className="form-group">
+              <label className="form-label">Supporting Document</label>
+              <div style={{border:'1px dashed var(--gray-300)',padding:8,textAlign:'center',borderRadius:'var(--radius-md)',color:'var(--gray-500)',cursor:'pointer',fontSize:'0.8125rem'}}>
+                Upload PDF/JPG
+              </div>
+            </div>
           </div>
 
           <table className="data-table" style={{marginBottom: 24}}>
@@ -118,7 +124,7 @@ export default function JournalEntry() {
                   <td>
                     <select className="form-input" value={line.ledgerId} onChange={e=>updateLine(i, 'ledgerId', e.target.value)} disabled={isReadOnly}>
                       <option value="">-- Select Ledger --</option>
-                      {coa.map(c => <option key={c.id} value={c.id}>{c.name} ({c.group})</option>)}
+                      {coa.map(c => <option key={c.id} value={c.id} disabled={['Bank', 'Cash', 'Bank Accounts', 'Cash-in-Hand'].includes(c.group)}>{c.name} ({c.group})</option>)}
                     </select>
                   </td>
                   <td><input type="number" className="form-input" style={{textAlign:'right'}} value={line.debit} onChange={e=>updateLine(i, 'debit', e.target.value)} disabled={isReadOnly}/></td>
