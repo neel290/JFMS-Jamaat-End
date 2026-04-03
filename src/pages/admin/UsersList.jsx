@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Filter, Download, Plus, Eye, Edit, History, X, CheckCircle2 } from 'lucide-react';
+import { useStore } from '../../store/useStore';
 export default function UsersList() {
   const navigate = useNavigate();
   const [showAudit, setShowAudit] = useState(false);
-  const users = [
-    {name:'Husain Johar',its:'30412587',role:'Treasurer',status:'Active',login:'01-Apr-2026 10:30 AM'},
-    {name:'Mufaddal Saifuddin',its:'30415623',role:'Secretary',status:'Active',login:'01-Apr-2026 09:15 AM'},
-    {name:'Taher Bhai Rangwala',its:'30418901',role:'Accountant',status:'Active',login:'31-Mar-2026 04:45 PM'},
-    {name:'Burhanuddin Hakimuddin',its:'30422456',role:'Accountant',status:'Active',login:'31-Mar-2026 02:00 PM'},
-    {name:'Abdeali Bhaisaheb',its:'30425789',role:'Viewer',status:'Inactive',login:'15-Mar-2026'},
-    {name:'Qaidjohar Ezzi',its:'30429012',role:'Accountant',status:'Pending Approval',login:'Never'},
-  ];
+  const { users, currentUser } = useStore();
+  const canExportExcel = currentUser?.customPermissions?.includes('export_excel');
+  const canExportPdf = currentUser?.customPermissions?.includes('export_pdf');
+  const canExport = canExportExcel || canExportPdf;
+
   return (<div>
     <div className="page-header">
       <div><h1 className="page-title">User Management</h1><p className="page-subtitle">Manage users, roles, and permissions</p></div>
@@ -25,18 +23,21 @@ export default function UsersList() {
         <div className="search-box"><Search size={16} /><input placeholder="Search by name or ITS ID..." /></div>
         <button className="filter-btn"><Filter size={14} /> Role</button>
         <button className="filter-btn"><Filter size={14} /> Status</button>
-        <div style={{marginLeft:'auto'}}><button className="btn btn-secondary btn-sm"><Download size={14} /> Export</button></div>
+        <div style={{marginLeft:'auto', display:'flex', gap: 8}}>
+          {canExportExcel && <button className="btn btn-secondary btn-sm"><Download size={14} /> Export Excel</button>}
+          {canExportPdf && <button className="btn btn-secondary btn-sm"><Download size={14} /> Export PDF</button>}
+        </div>
       </div>
       <table className="data-table">
         <thead><tr><th>Name</th><th>ITS ID</th><th>Role</th><th>Status</th><th>Last Login</th><th>Actions</th></tr></thead>
         <tbody>{users.map((u, i) => (
-          <tr key={i} className="clickable" onClick={() => navigate('/admin/users/' + i)}>
-            <td style={{fontWeight: 500}}>{u.name}</td><td>{u.its}</td><td>{u.role}</td>
+          <tr key={i} className="clickable" onClick={() => navigate('/admin/users/' + u.id)}>
+            <td style={{fontWeight: 500}}>{u.name || 'Unknown'}</td><td>{u.itsId || 'Non-Mumin'}</td><td>{u.roleId || 'No Role'}</td>
             <td><span className={'badge badge-' + (u.status === 'Active' ? 'active' : u.status === 'Inactive' ? 'inactive' : 'pending')}>{u.status}</span></td>
-            <td>{u.login}</td>
+            <td>{u.lastLogin || 'Never'}</td>
             <td onClick={e => e.stopPropagation()}>
-              <button className="btn btn-ghost btn-sm"><Eye size={14} /></button>
-              <button className="btn btn-ghost btn-sm"><Edit size={14} /></button>
+              <button className="btn btn-ghost btn-sm" onClick={() => navigate('/admin/users/' + u.id)}><Eye size={14} /></button>
+              <button className="btn btn-ghost btn-sm" onClick={() => navigate('/admin/users/' + u.id)}><Edit size={14} /></button>
             </td>
           </tr>
         ))}</tbody>
